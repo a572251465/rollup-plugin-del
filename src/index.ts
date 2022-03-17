@@ -10,7 +10,7 @@ const rollupPluginDel = (options: IInputOptions = {}) => {
   return {
     name: 'del',
     async buildStart() {
-      if (Reflect.has(options, 'dest')) {
+      if (Reflect.has(options, 'dest') && typeof options.dest === 'string') {
         const res = await globalMatch(options.dest!)
         dirs = res.length > 0 ? res : []
       }
